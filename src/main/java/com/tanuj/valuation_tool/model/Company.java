@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 
 @Entity
 public class Company {
@@ -12,11 +14,21 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message="Ticker is required")
     private String ticker;
+
+    @NotBlank(message = "Company name is required")
     private String name;
+
+    @Positive(message = "Revenue must be positive")
     private double revenue;
+
+    @Positive(message = "EBITDA must be positive")
     private double ebitda;
+
     private double netIncome;
+
+    @Positive(message = "Share outstanding must be positive")
     private double sharesOutstanding;
 
     public Company() {}

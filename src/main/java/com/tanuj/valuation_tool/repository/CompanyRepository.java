@@ -9,4 +9,5 @@ import com.tanuj.valuation_tool.model.Company;
 @Repository
 public interface CompanyRepository  extends JpaRepository<Company,Long>{
     Optional<Company> findByTicker(String ticker);
+    boolean existsByTicker(String ticker);
 }

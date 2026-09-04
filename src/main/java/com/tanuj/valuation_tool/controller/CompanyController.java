@@ -1,5 +1,8 @@
 package com.tanuj.valuation_tool.controller;
 
+import jakarta.validation.Valid;
+import com.tanuj.valuation_tool.exception.CompanyNotFoundException;
+import com.tanuj.valuation_tool.exception.DuplicateTickerException;
 import com.tanuj.valuation_tool.model.Company;
 import com.tanuj.valuation_tool.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +19,10 @@ public class CompanyController {
     private CompanyRepository companyRepository;
 
     @PostMapping
-    public Company createCompany(@RequestBody Company company) {
+    public Company createCompany(@Valid @RequestBody Company company) {
+        if (companyRepository.existsByTicker(company.getTicker())) {
+            throw new DuplicateTickerException(company.getTicker());
+        }
         return companyRepository.save(company);
     }
 
@@ -28,6 +34,6 @@ public class CompanyController {
     @GetMapping("/{ticker}")
     public Company getCompany(@PathVariable String ticker) {
         return companyRepository.findByTicker(ticker)
-                .orElseThrow(() -> new RuntimeException("Company not found: " + ticker));
+                .orElseThrow(() -> new CompanyNotFoundException(ticker));
     }
 }
