@@ -1,7 +1,7 @@
 package com.tanuj.valuation_tool.controller;
 
-import com.tanuj.valuation_tool.controller.dto.DcfRequest;
-import com.tanuj.valuation_tool.controller.dto.DcfResponse;
+import com.tanuj.valuation_tool.dto.DcfRequest;
+import com.tanuj.valuation_tool.dto.DcfResponse;
 import com.tanuj.valuation_tool.service.ValuationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

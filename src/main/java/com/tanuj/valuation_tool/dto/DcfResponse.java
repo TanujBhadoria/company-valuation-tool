@@ -1,4 +1,4 @@
-package com.tanuj.valuation_tool.controller.dto;
+package com.tanuj.valuation_tool.dto;
 
 import java.util.List;
 

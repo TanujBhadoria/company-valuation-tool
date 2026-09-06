@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tanuj.valuation_tool.controller.dto.DcfRequest;
-import com.tanuj.valuation_tool.controller.dto.DcfResponse;
+import com.tanuj.valuation_tool.dto.DcfRequest;
+import com.tanuj.valuation_tool.dto.DcfResponse;
 import com.tanuj.valuation_tool.exception.CompanyNotFoundException;
 import com.tanuj.valuation_tool.exception.InvalidValuationException;
 import com.tanuj.valuation_tool.model.Company;
