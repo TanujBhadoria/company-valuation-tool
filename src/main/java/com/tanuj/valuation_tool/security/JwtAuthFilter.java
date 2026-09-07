@@ -35,12 +35,12 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             jwt = authHeader.substring(7);
+            System.out.println("RECEIVED JWT LENGTH: " + jwt.length());
+            System.out.println("RECEIVED JWT: [" + jwt + "]");
             try {
                 username = jwtUtil.extractUsername(jwt);
             } catch (Exception e) {
-                // Invalid token
                 System.out.println("JWT ERROR: " + e.getMessage());
-                e.printStackTrace();
             }
         }
 

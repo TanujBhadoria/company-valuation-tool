@@ -29,7 +29,6 @@ public class AuthController {
     @Autowired
     private JwtUtil jwtUtil;
 
-
     @PostMapping("/register")
     public AuthResponse register(@RequestBody AuthRequest request) {
         if (userRepository.existsByUsername(request.getUsername())) {
@@ -48,11 +47,11 @@ public class AuthController {
     @PostMapping("/login")
     public AuthResponse login(@RequestBody AuthRequest request) {
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
-        );
+                new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 
         String token = jwtUtil.generateToken(request.getUsername());
+        System.out.println("GENERATED TOKEN LENGTH: " + token.length());
+        System.out.println("GENERATED TOKEN: [" + token + "]");
         return new AuthResponse(token);
     }
-
 }
